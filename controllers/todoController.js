@@ -31,7 +31,7 @@ app.get('/', function(req,res){
   });
 
 });
-app.post('/todo',urlencodedParser, function(req,res){
+app.post('/',urlencodedParser, function(req,res){
 
   //get data form the view and add to the mongodb
    var item1 = Todo(req.body).save(function(err,data){
@@ -43,7 +43,7 @@ app.post('/todo',urlencodedParser, function(req,res){
 //res.json(data);
 
 
-app.delete('/todo/:item', function(req,res){
+app.delete('/:item', function(req,res){
   //delete the requested items from the mongodb database
   Todo.find({item: req.params.item.replace(/\-/g," ")}).remove(function(err,data){
     if(err) throw err;
